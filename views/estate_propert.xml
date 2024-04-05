@@ -1,0 +1,94 @@
+<odoo>
+    <data>
+
+            <record id="estate_property_view_search" model="ir.ui.view">
+                <field name="name">Estate Property Search</field>
+                <field name="model">estate.property</field>
+                <field name="arch" type="xml">
+                   <search string="Tests">
+                        <filter name="Postal Code Is Set" domain="[('postcode', '&gt;', 0)]" />
+                        <field name="name"/>
+                        <field name="last_seen"/>
+                         <field name="postcode" />
+                   </search>
+                </field>
+            </record>
+
+            <record id="estate_property_view_tree" model="ir.ui.view">
+                <field name="name">Estate Property List</field>
+                <field name="model">estate.property</field>
+                <field name="arch" type="xml">
+                    <tree string="Estate Property List">
+                        <field name="name" />
+                        <field name="postcode" />
+                        <field name="date_availability" />
+                        <field name="expected_price" />
+                        <field name="selling_price" />
+                        <field name="bedrooms" />
+                        <field name="living_area" />
+                        <field name="facades" />
+                        <field name="garage" />
+                        <field name="garden" />
+                        <field name="garden_area" />
+                        <field name="garden_orientation" />
+                        <field name="user_id" />
+                        <field name="last_seen" />
+                        <field name="total_area" />
+                        <field name="state" />
+                        
+                    </tree>
+                </field>
+            </record>
+
+             <record id="estate_property_view_form" model="ir.ui.view">
+                <field name="name">Estate Property List</field>
+                <field name="model">estate.property</field>
+                <field name="arch" type="xml">
+                  <form string="Test">
+
+                   <header>
+				        <button name="action_sold" type="object" string="Sold" invisible="state=='canceled' or state=='sold' or state=='offer_accepted'"/>
+				        <button name="action_cancel" type="object" string="Cancel" invisible="state=='canceled' or state=='sold' or state=='offer_accepted'" />
+				        <field name="state" widget="statusbar" statusbar_visible="new,offer_received,offer_accepted,sold"/>
+				    </header>
+
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="postcode" />
+                                <field name="date_availability" />
+                                <field name="expected_price" />
+                                 <field name="facades" />
+                                <field name="garage" />
+                            </group>
+                        
+                            <group>
+                            <field name="garden" />
+                                <field name="garden_area" />
+                                 <field name="selling_price" />
+                                <field name="bedrooms" />
+                                <field name="living_area" />
+                                <field name="last_seen" />
+                            </group>
+                            <notebook>
+                                <page string="Description">
+                                    <field name="description" />
+                                    <field name="garden_orientation" />
+                                </page>
+                                <page string="User Info">
+                                    <field name="user_id" />
+                                    <field name="buyer_id" />
+                                </page>
+                                <page string="Total Area">
+                                    <field name="total_area" />
+                                   
+                                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+                  </form>
+                </field>
+            </record>
+    </data>
+</odoo> 
